@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.aidaole.easyrichtext.RichEditText
+        android:id="@+id/edittext"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:text="123456789"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/touchpad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/edittext">
+
+        <Button
+            android:id="@+id/bold_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bold" />
+
+        <Button
+            android:id="@+id/text_color_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextColor" />
+
+        <Button
+            android:id="@+id/text_italic_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Italic" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/touchpad"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/print_spans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打印所有span" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="回退" />
+
+        <Button
+            android:id="@+id/forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="前进" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
