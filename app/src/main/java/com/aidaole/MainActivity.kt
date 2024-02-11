@@ -7,6 +7,7 @@ import com.aidaole.easyrichtext.BoldSpan
 import com.aidaole.easyrichtext.ItalicSpan
 import com.aidaole.easyrichtext.RichEditText
 import com.aidaole.easyrichtext.TextColorSpan
+import com.aidaole.easyrichtext.UnderlineSpan
 import com.aidaole.easyrichtext.databinding.ActivityEditBinding
 import com.aidaole.easyrichtext.printSpans
 
@@ -24,12 +25,11 @@ class MainActivity : AppCompatActivity() {
         layout.edittext.setOnSelectionChangedListener(object : RichEditText.OnSelectionChangedListener {
             override fun onSelectionChanged(selStart: Int, selEnd: Int) {
                 "onSelectionChanged-> start: $selStart, end: $selEnd".logi(TAG)
-                notifyBtnState(selStart, selEnd)
+                changeButtonsState(selStart, selEnd)
             }
         })
-
         layout.boldBtn.setOnClickListener {
-            if (layout.boldBtn.textColors.defaultColor == Color.GREEN) {
+            if (layout.edittext.isSpan(BoldSpan(selectStart(), selectEnd()))) {
                 layout.edittext.removeSpan(BoldSpan(selectStart(), selectEnd()))
                 layout.boldBtn.setTextColor(Color.WHITE)
             } else {
@@ -52,6 +52,14 @@ class MainActivity : AppCompatActivity() {
                 layout.edittext.addSpan(ItalicSpan(selectStart(), selectEnd()))
             }
         }
+        layout.textUnderlineBtn.setOnClickListener {
+            if (layout.textUnderlineBtn.textColors.defaultColor == Color.GREEN) {
+                layout.edittext.removeSpan(UnderlineSpan(selectStart(), selectEnd()))
+                layout.textUnderlineBtn.setTextColor(Color.WHITE)
+            } else {
+                layout.edittext.addSpan(UnderlineSpan(selectStart(), selectEnd()))
+            }
+        }
         layout.printSpans.setOnClickListener {
             layout.edittext.printSpans(selectStart(), selectEnd())
         }
@@ -63,25 +71,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun notifyBtnState(selStart: Int, selEnd: Int) {
-        val isBoldSpan =
-            layout.edittext.isSpan(BoldSpan(selStart, selEnd))
-        if (isBoldSpan) {
+    private fun changeButtonsState(selStart: Int, selEnd: Int) {
+        if (layout.edittext.isSpan(BoldSpan(selStart, selEnd))) {
             layout.boldBtn.setTextColor(Color.GREEN)
         } else {
             layout.boldBtn.setTextColor(Color.WHITE)
         }
-        val isTextColorSpan = layout.edittext.isSpan(TextColorSpan(selStart, selEnd))
-        if (isTextColorSpan) {
+        if (layout.edittext.isSpan(TextColorSpan(selStart, selEnd))) {
             layout.textColorBtn.setTextColor(Color.GREEN)
         } else {
             layout.textColorBtn.setTextColor(Color.WHITE)
         }
-        val isItalicSpan = layout.edittext.isSpan(ItalicSpan(selStart, selEnd))
-        if (isItalicSpan) {
+        if (layout.edittext.isSpan(ItalicSpan(selStart, selEnd))) {
             layout.textItalicBtn.setTextColor(Color.GREEN)
         } else {
             layout.textItalicBtn.setTextColor(Color.WHITE)
+        }
+        if (layout.edittext.isSpan(UnderlineSpan(selStart, selEnd))) {
+            layout.textUnderlineBtn.setTextColor(Color.GREEN)
+        } else {
+            layout.textUnderlineBtn.setTextColor(Color.WHITE)
         }
     }
 

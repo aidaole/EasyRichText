@@ -22,27 +22,33 @@
             android:id="@+id/bold_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bold" />
+            android:text="加粗" />
 
         <Button
             android:id="@+id/text_color_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextColor" />
+            android:text="字体颜色" />
 
         <Button
             android:id="@+id/text_italic_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Italic" />
+            android:text="斜体" />
+
+        <Button
+            android:id="@+id/text_underline_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下划线" />
 
     </LinearLayout>
 
     <LinearLayout
-        app:layout_constraintTop_toBottomOf="@id/touchpad"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/touchpad">
 
         <Button
             android:id="@+id/print_spans"
